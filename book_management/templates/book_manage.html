@@ -1,0 +1,106 @@
+{% extends 'base.html' %} 
+{% block title %}Book Management{% endblock %} 
+{% block content %}
+
+<!-- ====================== SECTION PAGETOP ====================== -->
+<section class="bg-gray-200 mt-[-10px]">
+  <div class="md:container md:px-0 text-center md:text-left md:w-10/12 md:mx-auto py-16">
+    <h2 class="text-2xl font-bold">Manage Books</h2>
+  </div>
+</section>
+<!-- ================= SECTION INTRO END// ================== -->
+
+<!-- ======================= SECTION CONTENT ======================= -->
+<section class="section-content py-4">
+  <div class="md:container md:w-10/12 w-full md:mx-auto">
+    <section>
+        <div class = "md:flex">
+            <div class = "md:w-1/4 w-full ">
+                <div class="p-4 bg-white border border-gray-200 md:rounded-lg shadow sm:p-6 dark:bg-gray-800 dark:border-gray-700" >
+                    <h5 class="mb-3 text-base font-semibold text-gray-900 md:text-xl dark:text-white" >
+                        Books Category
+                    </h5>
+                    <ul class="my-4 space-y-3">
+                        <li>
+                        <a
+                            href="#"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                        >
+                            <span class="flex-1 ml-3 whitespace-nowrap">Adventure stories</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a
+                            href="#"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                        >
+                            <span class="flex-1 ml-3 whitespace-nowrap">Historical fiction</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a
+                            href="#"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                        >
+                            <span class="flex-1 ml-3 whitespace-nowrap">Humour and satire</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a
+                            href="#"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                        >
+                            <span class="flex-1 ml-3 whitespace-nowrap">Literary fiction</span>
+                        </a>
+                        </li>
+                        <li>
+                        <a
+                            href="#"
+                            class="flex items-center p-3 text-base font-bold text-gray-900 rounded-lg bg-gray-50 hover:bg-gray-100 group hover:shadow dark:bg-gray-600 dark:hover:bg-gray-500 dark:text-white"
+                        >
+                            <span class="flex-1 ml-3 whitespace-nowrap">Science fiction</span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class = "md:w-3/4 w-full md:ml-4">
+                <div class = "grid md:grid-cols-3 gap-4">
+                    {% for book in books %}
+                    <div>
+                        <div class="md:max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4">
+                            <a href="#">
+                                <img class="rounded-t-lg" src="https://images.unsplash.com/photo-1531988042231-d39a9cc12a9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="" />
+                            </a>
+                            <div>
+                                <a href="#">
+                                    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+                                </a>
+                                <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology so far, in reverse chronological order.</p>
+                                <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    BORROW
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+      {% comment %} test {% endcomment %}
+  <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// 
+    
+        
+
+
+
+
+    
+    
+    
+    ========================= -->
+
+{% endblock %}
