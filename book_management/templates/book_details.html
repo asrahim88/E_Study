@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block bookt_details %}{% endblock bookt_details %}
+{% block content %}
+<div class = 'md:w-3/4 w-full mx-auto'>
+    <div class = 'flex shadow'>
+        <div class = 'md:w-4/12 w-full py-2 pl-2'>
+            <img class="w-full rounded-l-lg" src="{{book_details.images.url}}" alt="image description">
+        </div>
+        <div class = 'md:w-8/12 w-full py-2'>
+            
+            <div class="max-w-full h-full p-6 ">
+                
+                <h5 class="mb-2 text-4xl font-bold tracking-tight text-gray-600">{{book_details.book_title}}</h5>
+                <hr>
+                <hr>
+                <p class = "font-bold tracking-tight text-gray-600 mt-4">
+                    <span class = 'underline text-2xl'>
+                        Author:
+                    </span>
+                     by {{book_details.author}}</p>
+                <hr>
+                <hr>
+
+                <p class = "mt-4 font-bold tracking-tight text-gray-600">
+                    <span class = 'underline text-2xl'>
+                        ISBN: 
+                    </span>
+                    {{book_details.ISBN}}</p>
+
+                <hr>
+                <hr>
+
+                <p class = "mt-4 font-bold tracking-tight text-gray-600">
+                    <span class = 'underline text-2xl'>
+                        Genre: 
+                    </span>
+                    {{book_details.genre}}</p>
+                <hr>
+                <hr>
+
+                <p class = "mt-4 font-bold tracking-tight text-gray-600">
+                    <span class = 'underline text-2xl'>
+                        Available: 
+                    </span>
+                    
+                    {% if book_details.is_available %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %} </p>
+                <hr>
+                <hr>
+
+                 <p class = "mt-4 font-bold tracking-tight text-gray-600">
+                    <span class = 'underline text-2xl'>
+                        First_publications:
+                    </span>
+                   
+                     {{book_details.first_pub}}</p>
+                 <hr><hr>
+                 
+                 <p class = "mt-4 font-bold tracking-tight text-gray-600">
+                    <span class = 'underline text-2xl'>Modified_publications:</span>
+                     {{book_details.modified_pub}}</p>
+                 <hr>
+                 <hr>
+
+                 <p class = "mt-4 font-bold tracking-tight text-gray-600">
+                    <span class = 'underline text-2xl'>in Stocks: </span>
+                    {{book_details.stock}}</p>
+                 <hr>
+                 <hr>
+
+                <p class="mt-4 mb-3 text-gray-600 font-bold tracking-tight"><span class = 'underline text-2xl'>
+                    Description:
+                </span> {{book_details.description}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
