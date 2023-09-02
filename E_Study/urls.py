@@ -5,5 +5,5 @@ urlpatterns = [
     path('', views.home),
     path('admin/', admin.site.urls),
     path('account/', include("Accounts.urls")),
-    path('books/', include("book_management.urls")),
+    # path('books/', include("book_management.urls")),
 ]
