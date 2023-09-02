@@ -4,9 +4,7 @@ from book_management.models import Category
 
 # Create your views here.
 def manage_book(request, category_slug= None):
-    # query = request.GET.get('query')
-    # results = Books.objects.filter(book_title__icontains=query)
-    # print('Search box', results)
+    
     if category_slug:
         category = get_object_or_404(Category, slug = category_slug)
         books = Books.objects.filter(is_available = True, genre = category)
@@ -16,10 +14,6 @@ def manage_book(request, category_slug= None):
     
     context = {"books": books, "categories": categories}
     return render(request, 'book_manage.html', context)
-
-# def search_books(request):
-    
-#     return render(request, 'book_manage.html')
 
 def bookDetails(request, category_slug, book_slug):
     single_book = Books.objects.get(slug= book_slug, genre__slug = category_slug)

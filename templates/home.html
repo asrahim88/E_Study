@@ -1,4 +1,29 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>This is home page. </h1>
+<div class = "md:w-3/4 w-full md:ml-4">
+    <h4 class = 'px-4'> {{books|length}} Items Found</h4>
+    <hr class = 'pb-4 mt-2'>
+    <div class = "grid md:grid-cols-3 gap-4">
+        {% for book in books %}
+        <div class = 'h-350px'>
+            <div class="md:max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 p-4 h-full">
+                <div class = 'h-[250px] w-full'>
+                    <a href="#">
+                        <img class="rounded-t-lg h-full w-full" src="{{book.images.url}}" alt="" />
+                    </a>
+                </div>
+                <div>
+                    <a href="{% url 'book_details' book.genre.slug book.slug %}">
+                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{book.book_title}}</h5>
+                    </a>
+                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Author: by {{book.author}}</p>
+                    <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        BORROW
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock  %}
