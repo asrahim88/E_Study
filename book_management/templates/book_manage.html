@@ -45,7 +45,7 @@
                                 </a>
                             </div>
                             <div>
-                                <a href="#">
+                                <a href="{% url 'book_details' book.id %}">
                                     <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{book.book_title}}</h5>
                                 </a>
                                 <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">Author: by {{book.author}}</p>

@@ -16,20 +16,21 @@ def manage_book(request, category_slug= None):
     context = {"books": books, "categories": categories}
     return render(request, 'book_manage.html', context)
 
-def bookDetails(request, category_slug, book_slug):
-    # working code start
-    bookDetails = Books.objects.get(slug= book_slug, genre__slug = category_slug)
+def bookDetails(request, id):
+    bookDetails = Books.objects.get(id = id)
     print(bookDetails)
-    # working code end
     return render(request, 'book_details.html', {"book_details": bookDetails})
 
 
 def add_books(request):
-    if request.method == 'POST':
-        form = BooksForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+    if request.user.is_authenticated and request.user.is_staff:
+        if request.method == 'POST':
+            form = BooksForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return redirect('home')
+        else:
+            form = BooksForm()
+        return render(request, 'books_add_form.html', {'form': form})
     else:
-        form = BooksForm()
-    return render(request, 'books_add_form.html', {'form': form})
+        return redirect('signIn')

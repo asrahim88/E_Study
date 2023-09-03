@@ -18,7 +18,7 @@ def sign_up(request):
             if form.is_valid():
                 messages.success(request, "Account Created Successfully")
                 form.save()
-                print(form.cleaned_data)
+                return redirect("signIn")
         else:
             form = signUp_forms.UserRegister()
             
