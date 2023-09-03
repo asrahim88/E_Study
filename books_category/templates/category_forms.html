@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block add_books %}{% endblock%}
+{% block content %}
+    
+<div class = 'md:w-2/4 w-full md:mx-auto border border-2 p-4'> 
+
+{% load crispy_forms_tags %}
+
+                      <!-- category_form -->
+<div>
+    <div class="max-w-md mx-auto mt-8 p-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold mb-4">Add a New Category</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="mt-4">
+                <button type="submit" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
+                    add category
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</div> 
+  
+{% endblock %}
