@@ -44,9 +44,11 @@
               <li>
                 <a href="{% url 'manage_book' %}" class="block py-2 pl-3 pr-4 md:text-white text-cyan-400 md:border-0 border md:hover:bg-transparent hover:bg-cyan-400 hover:text-white border-cyan-400 rounded md:p-0 dark:text-white md:dark:text-white" aria-current="page">books_catalog</a>
               </li>
+              {% if user.is_authenticated %}
               <li>
                 <a href="{% url 'borrow_list' %}" class="block py-2 pl-3 pr-4 md:text-white text-cyan-400 md:border-0 border md:hover:bg-transparent hover:bg-cyan-400 hover:text-white border-cyan-400 rounded md:p-0 dark:text-white md:dark:text-white" aria-current="page">Book_borrow_list</a>
               </li>
+              {% endif %}
               {% if user.is_authenticated %}
                 <li>
                   <a href="{% url 'add_books' %}" class="block py-2 pl-3 pr-4 md:text-white text-cyan-400 md:border-0 border md:hover:bg-transparent hover:bg-cyan-400 hover:text-white border-cyan-400 rounded md:p-0 dark:text-white md:dark:text-white" aria-current="page">add_ooks</a>
