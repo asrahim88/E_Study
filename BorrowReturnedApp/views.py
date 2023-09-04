@@ -1,23 +1,30 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
+from django.core.exceptions import ObjectDoesNotExist
 from book_management.models import Books
 from .models import BorrowReturn
 from .review_forms import ReviewForm
+from django.shortcuts import get_object_or_404
+
 
 def borrow_book(request, id):
         if request.user.is_authenticated:
-            book = Books.objects.get(id=id)
-            user = request.user 
-            borrow_return_instance = BorrowReturn(
-                user=user,
-                book_id=book,  
-                is_returned = False,  
-            )
-            borrow_return_instance.save()
-            
-            book.stock -=1
-            book.save()
-            
-            
+            try:
+                borrowed_book = BorrowReturn.objects.get(book_id__id=id)
+                print(borrowed_book)
+                
+                return redirect("manage_book")
+            except ObjectDoesNotExist:   
+                book = Books.objects.get(id=id)
+                user = request.user 
+                borrow_return_instance = BorrowReturn(
+                    user=user,
+                    book_id=book,  
+                    is_returned = False,  
+                )
+                borrow_return_instance.save()
+                
+                book.stock -=1
+                book.save() 
             return redirect("manage_book")  
         else:
             return redirect("signIn")
@@ -31,21 +38,19 @@ def show_borrow_book_list(request):
 
 
 
- 
 def return_book(request, id):
-    
-    book = Books.objects.get(id=id)
-    book.stock +=1
+    book = get_object_or_404(Books, id=id)
+    book.stock += 1
     book.save()
     
-    borrow_books = BorrowReturn.objects.filter(book_id__id=id, user=request.user)
+    borrow_books = get_object_or_404(BorrowReturn, book_id__id=id, user=request.user)
+    borrow_books.is_returned = True
+    # borrow_books.delete()
+    borrow_books.save()
     
-    for borrow_book in borrow_books:
-        borrow_book.is_returned = True
-        borrow_book.save()
-    
-    return redirect("borrow_list")
+    return redirect("manage_book")
 
+ 
 def create_review(request, id):  
     book = Books.objects.get(id=id)
     

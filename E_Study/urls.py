@@ -10,4 +10,5 @@ urlpatterns = [
     path('books/', include("book_management.urls")),
     path('category/', include("books_category.urls")),
     path('borrow/', include("BorrowReturnedApp.urls")),
+    path('wishlist/', include("wishlist.urls")),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

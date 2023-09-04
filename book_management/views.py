@@ -23,7 +23,7 @@ def bookDetails(request, id):
 
 
 def add_books(request):
-    if request.user.is_authenticated and request.user.is_staff:
+    if request.user.is_authenticated:
         if request.method == 'POST':
             form = BooksForm(request.POST, request.FILES)
             if form.is_valid():

@@ -3,13 +3,23 @@ from django.contrib import messages
 from . import signUp_forms
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
+from wishlist.models import WishList
 # Create your views here.
 
 def profile(request):
     if request.user.is_authenticated:
-        return render(request, 'profile.html', {"user": request.user})
+        wishListBook = WishList.objects.all()
+        for book in wishListBook:
+            print('after clicking profile button',book.wish_book.book_title)
+        return render(request, 'profile.html', {"wishList": wishListBook})
     else:
         return redirect("signIn")
+
+def delete_wish_book(request, id):
+    wishListBook = WishList.objects.get(wish_book__id = id)
+    wishListBook.delete()
+    
+    return redirect("profile")
 
 def sign_up(request):
     if not request.user.is_authenticated:

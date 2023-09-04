@@ -1,4 +1,51 @@
 {% extends 'base.html' %}
 {% block title %}Profile{% endblock%}
 {% block content %}
+
+<section class = 'bg-gray-200 mb-[-40px]'>
+    <h1 class = 'font-bold text-center text-4xl py-10'>
+       Hey! <span class = 'text-cyan-900'>{{user}}</span> your Wishlist is here!!!
+    </h1>
+    <div class = 'md:w-2/4 mx-auto p-10'>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Book_Title
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Author
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Stock
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Is_Borrow
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for book in wishList %}
+                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{book.wish_book.book_title}}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{book.wish_book.author}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{book.wish_book.stock}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href = "{% url 'delete_wish' book.wish_book.id %}"  class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
 {% endblock%}
