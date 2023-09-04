@@ -26,10 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Accounts',
+    'BorrowReturnedApp',
     "crispy_forms",
     "crispy_tailwind",
     'book_management',
-    'books_category'
+    'books_category',
+    'wishlist',
+    
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"

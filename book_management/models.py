@@ -11,9 +11,8 @@ class Books(models.Model):
     stock = models.IntegerField()
     is_available = models.BooleanField(default=True)
     genre = models.ForeignKey(Category, on_delete=models.CASCADE)
-    first_pub =models.DateField(auto_now_add=True)
+    first_pub =models.DateField(auto_now_add=True, null=True, blank=True)
     modified_pub = models.DateField(auto_now=True) 
     
-    def __str__(self):
+    def __str__(self) -> str:
         return self.book_title
-    

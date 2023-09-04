@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+show book borrow list page
+{% endblock%}
+{% block content %}
+
+    {% comment %} table {% endcomment %}
+    <div class = 'pt-10 bg-gray-400 pb-10 mb-[-40px]'>
+        <div class= 'mb-4'>
+            <h1 class = 'text-center text-3xl font-bold'>{{user}}</h1>
+        </div>
+        <div class = 'w-3/4 mx-auto'>
+            <div class="relative overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Book name
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Is_Return
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Give_review
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Return_Status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for book in borrow_books %}
+                            {% if book.is_returned == False %}
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{book.book_id}}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{book.is_returned}}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="{% url 'review' book.book_id.id %}" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">Review</a>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <a href="{% url 'book_return' book.book_id.id %}" type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
+                                            Return
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% comment %} table {% endcomment %}
+{% endblock%}
