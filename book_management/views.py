@@ -22,8 +22,10 @@ def bookDetails(request, id):
     return render(request, 'book_details.html', {"book_details": bookDetails})
 
 
+
+
 def add_books(request):
-    if request.user.is_authenticated:
+    if request.user.is_authenticated and (request.user.is_superuser or request.user.is_staff):
         if request.method == 'POST':
             form = BooksForm(request.POST, request.FILES)
             if form.is_valid():
@@ -33,5 +35,6 @@ def add_books(request):
             form = BooksForm()
         return render(request, 'books_add_form.html', {'form': form})
     else:
-        return redirect('signIn')
+        return redirect("home")
+
 

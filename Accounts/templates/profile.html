@@ -4,9 +4,19 @@
 
 <section class = 'bg-gray-200 mb-[-40px]'>
     <h1 class = 'font-bold text-center text-4xl py-10'>
-       Hey! <span class = 'text-cyan-900'>{{user}}</span> your Wishlist is here!!!
+       Hey! <span class = 'text-cyan-900'>{{user}}</span> 
+       
+       {% if not user.is_superuser and not user.is_staff %}
+       Your Wishlist is here
+       {% endif %}
+
+       {% if  user.is_superuser and  user.is_staff %}
+       welcome to admin profile
+       {% endif %}
     </h1>
-    <div class = 'md:w-2/4 mx-auto p-10'>
+
+    {% if not user.is_superuser and not user.is_staff %}
+    <div class = 'md:w-3/4 mx-auto p-10'>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -46,6 +56,8 @@
             </table>
         </div>
     </div>
+    {% endif %}
+    
 </section>
 
 {% endblock%}

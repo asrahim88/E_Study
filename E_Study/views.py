@@ -13,7 +13,4 @@ def home(request):
     
     # Showing all the reviews 
     reviews = Review.objects.all()
-    for i in reviews:
-        print(i.text, " ", i.date, " ", i.user.username, " ", i.book.book_title)
-    
     return render(request, 'home.html', {"books": books, "search_book": search_item, "reviews": reviews})
